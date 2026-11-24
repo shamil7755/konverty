@@ -1,4 +1,4 @@
-const CACHE = 'konverty-v1';
+const CACHE = 'konverty-v2';
 const ASSETS = ['./', './index.html', './style.css', './app.js', './manifest.webmanifest',
   './icons/icon-180.png', './icons/icon-192.png', './icons/icon-512.png'];
 
@@ -20,4 +20,14 @@ self.addEventListener('fetch', e => {
       return r;
     }).catch(() => caches.match(e.request).then(r => r || caches.match('./index.html')))
   );
+});
+
+// Нажатие на уведомление открывает нужный раздел
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  const url = './' + (e.notification.data?.view && e.notification.data.view !== 'home' ? '#' + e.notification.data.view : '');
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(cs => {
+    for (const c of cs) { if ('focus' in c) { c.navigate?.(url); return c.focus(); } }
+    return self.clients.openWindow(url);
+  }));
 });

@@ -147,3 +147,90 @@ table.t tr.tot td{font-weight:700}
 html,body{overflow-x:hidden}
 .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
 .grid>*,.list>*,.row2>*{min-width:0}
+
+/* ===== v2 ===== */
+html{touch-action:manipulation;-webkit-text-size-adjust:100%}
+body.noscroll{overflow:hidden}
+/* iOS увеличивает страницу при фокусе на поле со шрифтом < 16px — отсюда «съехавший» низ */
+input,select,textarea,.inp{font-size:16px!important}
+.inp.amount{font-size:30px!important}
+.toolbar .grow{flex:1;min-width:0;padding:9px}
+.mswitch.wide{flex:1}.mswitch.wide span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.seg.mini{flex:none}.seg.mini button{padding:7px 12px}
+.demo-badge{background:var(--yel);color:#2a1a00;font-size:11px;font-weight:800;padding:4px 8px;border-radius:8px;letter-spacing:.5px}
+.linkbtn{background:none;border:0;color:var(--mut);text-decoration:underline;padding:8px 2px;font-size:13.5px}
+.h3s{font-size:12.5px;color:var(--mut);margin:16px 2px 4px;text-transform:uppercase;letter-spacing:.5px}
+
+/* статус бюджета */
+.status{display:flex;gap:12px;border-radius:var(--r);padding:14px;margin:10px 0;border:1px solid}
+.status.ok{background:color-mix(in srgb,var(--acc) 11%,var(--card));border-color:color-mix(in srgb,var(--acc) 35%,transparent)}
+.status.warn{background:color-mix(in srgb,var(--yel) 12%,var(--card));border-color:color-mix(in srgb,var(--yel) 40%,transparent)}
+.status.bad{background:color-mix(in srgb,var(--red) 16%,var(--card));border-color:color-mix(in srgb,var(--red) 50%,transparent)}
+.status .sface{font-size:40px;line-height:1}
+.status .sbody{flex:1;min-width:0}
+.status.ok b{color:var(--acc)}.status.warn>.sbody>b{color:var(--yel)}.status.bad>.sbody>b{color:var(--red)}
+.status .stxt{font-size:13.5px;margin-top:4px}.status .stxt b{color:inherit!important}
+.sscore{font-size:12px;font-weight:700;background:var(--card2);border-radius:8px;padding:2px 7px;margin-left:4px}
+.slegend{display:flex;justify-content:space-between;font-size:11.5px;color:var(--mut);margin-top:4px}
+
+/* шкалы с точкой «сегодня» */
+.bar{position:relative;overflow:visible}
+.bar i{position:relative;z-index:1}
+.bar i.warnb{background:linear-gradient(90deg,var(--yel),#f97316)}
+.bar.has-tick{margin-top:7px}
+.bar .tick{position:absolute;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--tx);border:2px solid var(--card);z-index:2;box-shadow:0 0 0 1px var(--mut)}
+.fund .fe{display:flex;justify-content:space-between;align-items:center}
+.pct{font-size:12px;font-weight:700;background:var(--card2);border-radius:8px;padding:2px 7px;color:var(--mut)}
+.pct.neg{background:color-mix(in srgb,var(--red) 18%,transparent)}.pct.warn{background:color-mix(in srgb,var(--yel) 18%,transparent)}
+
+.inbox{position:relative}.inbox .x{background:none;border:0;color:inherit;font-size:16px;padding:0 4px;opacity:.7}
+.sug{border-color:color-mix(in srgb,var(--yel) 40%,var(--line))}
+.sug .toolbar select{padding:9px}
+
+/* отчёты: наложенные столбцы */
+.ovrow{padding:9px 0;border-top:1px solid var(--line)}
+.ovrow:first-of-type{border-top:0}
+.ovh{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;margin-bottom:5px}
+.ovh span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ovh span:last-child{white-space:nowrap}
+.dv{font-size:11.5px;margin-left:4px;color:var(--mut)}
+.ov{position:relative;height:16px;background:var(--card2);border-radius:6px}
+.ov i{position:absolute;left:0;top:0;bottom:0;border-radius:6px}
+.ov-plan{background:color-mix(in srgb,var(--acc2) 28%,transparent);border:1px dashed color-mix(in srgb,var(--acc2) 70%,transparent)}
+.ov-fc{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--acc2) 45%,transparent) 0 4px,transparent 4px 8px);top:3px!important;bottom:3px!important}
+.ov-fc.over{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--red) 55%,transparent) 0 4px,transparent 4px 8px)}
+.ov-fact{top:3px!important;bottom:3px!important}
+.ov-fact.okb{background:var(--acc)}.ov-fact.over{background:var(--red)}.ov-fact.nop{background:var(--acc2)}
+.ov-tick{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--tx);border-radius:2px;z-index:3}
+.cols .c div{position:relative}
+.cols .c i.pl{position:absolute;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--acc2) 22%,transparent);border:1px dashed color-mix(in srgb,var(--acc2) 60%,transparent);border-bottom:0}
+.cols .c i.out{background:var(--acc2);opacity:1;position:relative;z-index:1}
+.cols .c i.out.hi{background:var(--red)}
+.cols .c .stack{flex:1;position:relative;display:flex;align-items:flex-end;height:100%}
+.cols .c .stack i.out{flex:1}
+.cols.dense{gap:2px}.cols.dense .c i{border-radius:2px 2px 0 0}
+.cols .c.fut{opacity:.45}
+.cols .c.cur i.out{box-shadow:0 0 0 1.5px var(--tx)}
+.lg-plan{background:color-mix(in srgb,var(--acc2) 25%,transparent)!important;border:1px dashed var(--acc2)}
+.lg-fc{background:repeating-linear-gradient(135deg,var(--acc2) 0 2px,transparent 2px 4px)!important}
+svg.line{width:100%;height:140px;margin-top:8px;overflow:visible}
+svg.line polyline,svg.line line{fill:none;stroke-width:2.2;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+svg.line .lp{stroke:var(--acc2);stroke-dasharray:5 4;opacity:.7}
+svg.line .lf{stroke:var(--acc)}svg.line .lf.bad{stroke:var(--red)}
+svg.line .lfc{stroke:var(--mut);stroke-dasharray:2 4}
+.hbar{cursor:pointer}
+
+/* переключатели */
+.sw{display:flex;align-items:center;gap:12px;margin:10px 0;cursor:pointer}
+.sw input{display:none}
+.sw span{width:46px;height:28px;border-radius:14px;background:var(--line);position:relative;flex:none;transition:.2s}
+.sw span:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.sw input:checked+span{background:var(--acc)}
+.sw input:checked+span:after{left:21px}
+.sw.nolabel{margin:0}
+.tgl,.tgl-head{display:grid;grid-template-columns:1fr 54px 54px;align-items:center;gap:6px;padding:7px 0;border-top:1px solid var(--line)}
+.tgl span:first-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tgl-head{font-size:12px;color:var(--mut);border:0;text-align:center}
+.item .sw{margin-left:auto}
+.sugrow{padding:8px 0;border-top:1px solid var(--line)}
+.sugh{display:flex;justify-content:space-between;gap:8px}
